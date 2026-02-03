@@ -14,7 +14,10 @@ interface OrderData {
 const App: React.FC = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState<OrderData>({
-    meal: "", people: 1, restaurant: "", dishes: []
+    meal: "",
+    people: 1,
+    restaurant: "",
+    dishes: [],
   });
 
   const updateData = (newData: Partial<OrderData>) => {
@@ -29,22 +32,20 @@ const App: React.FC = () => {
     setStep((prev) => prev - 1);
   };
 
-  return (<div style={{ fontFamily: "sans-serif" }}>
-    {step === 1 && (<Step1
-      formData={formData}
-      updateData={updateData}
-      onNext={handleNext}
-    />)}
-    {step === 2 && (<Step2
-
-    />)}
-    {step === 3 && (<Step3
-
-    />)}
-    {step === 4 && (<Step4
-
-    />)}
-  </div>);
+  return (
+    <div style={{ fontFamily: "sans-serif" }}>
+      {step === 1 && (
+        <Step1
+          formData={formData}
+          updateData={updateData}
+          onNext={handleNext}
+        />
+      )}
+      {step === 2 && <Step2 />}
+      {step === 3 && <Step3 />}
+      {step === 4 && <Step4 />}
+    </div>
+  );
 };
 
 export default App;
