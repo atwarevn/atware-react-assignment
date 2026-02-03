@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# React Assignment: Food Pre-Order System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This assignment is designed to evaluate your React skills, specifically regarding state management,
+form validation, and UI/UX implementation. You are provided with a "base" repository built with \*
+\*Vite + TypeScript\*\* that contains core logic and data, but with an intentionally minimal and
+unpolished user interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Your goal is to complete the application logic and transform the UI into a professional,
+production-ready product.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Requirements
 
-## Expanding the ESLint configuration
+### Must-Have
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React & TypeScript:** Use modern React (18/19) and maintain strict type safety throughout the
+  project.
+- **Step 4 Implementation:** Complete the "Review" step to display a clear summary of all selections
+  made in previous steps.
+- **Validation Logic:** \* User cannot proceed to the next step if inputs are invalid.
+  - **Step 3 Constraint:** The total number of dishes (Sum of all servings) must be $\geq$ the
+    number of people selected in Step 1, with a maximum of 10 servings allowed.
+  - **Step 3 Constraint:** Users cannot select the same dish twice; they must increase the number
+    of servings instead.
+- **State Consistency:** Ensure that if a user goes back and changes a selection (e.g., changing the
+  Meal Category), any dependent data in subsequent steps is updated or cleared appropriately.
+- **Console Submission:** For the final "Submit" action, log the results as a structured JSON object
+  to the console.
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+### Great-to-Have (Optional)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **CSS Framework:** Use **Tailwind CSS** (preferred) or another CSS-in-JS library to refactor the
+  UI.
+- **Testing:** Write unit or integration tests for the core validation logic (e.g., total servings
+  vs. headcount).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+---
+
+## The Challenge: From "Bad" to "Great"
+
+The current repository is functional but has several issues you are expected to address:
+
+1. **UI/UX:** The current design is rudimentary. We expect you to improve the layout, spacing, and
+   overall user journey.
+2. **Architecture:** The code currently uses basic prop drilling. Feel free to refactor this using **Context API**, **useReducer**, or a state management library.
+3. **Data Handling:** The data is provided in `src/data/dishes.json` in Vietnamese. Ensure your
+   filtering logic handles these records correctly.
+
+---
+
+## Setup & Development
+
+1. **Install dependencies:**
+
+```bash
+   npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Run development server:**
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+   npm run dev
 ```
+
+---
