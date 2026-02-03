@@ -33,7 +33,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div style={{ fontFamily: "sans-serif" }}>
+    <main>
       {step === 1 && (
         <Step1
           formData={formData}
@@ -44,7 +44,7 @@ const App: React.FC = () => {
       {step === 2 && <Step2 />}
       {step === 3 && <Step3 />}
       {step === 4 && <Step4 />}
-    </div>
+    </main>
   );
 };
 
