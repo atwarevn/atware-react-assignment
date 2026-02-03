@@ -1,0 +1,196 @@
+{
+  "dishes": [
+    {
+      "id": 1,
+      "name": "Bánh Burger Gà",
+      "restaurant": "Tiệm Gà Rán Vui Vẻ",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 2,
+      "name": "Bánh Burger Bò",
+      "restaurant": "Tiệm Gà Rán Vui Vẻ",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 3,
+      "name": "Bánh Burger Phô Mai",
+      "restaurant": "Tiệm Gà Rán Vui Vẻ",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 4,
+      "name": "Khoai Tây Chiên",
+      "restaurant": "Tiệm Gà Rán Vui Vẻ",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 5,
+      "name": "Bánh Muffin Trứng",
+      "restaurant": "Tiệm Gà Rán Vui Vẻ",
+      "availableMeals": ["breakfast"]
+    },
+    {
+      "id": 6,
+      "name": "Bánh Cuộn Burrito",
+      "restaurant": "Tiệm Đồ Mễ",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 7,
+      "name": "Bánh Tacos",
+      "restaurant": "Tiệm Đồ Mễ",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 8,
+      "name": "Bánh Quesadilla",
+      "restaurant": "Tiệm Đồ Mễ",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 9,
+      "name": "Bít Tết Bò",
+      "restaurant": "Quán Nướng Ngói",
+      "availableMeals": ["dinner"]
+    },
+    {
+      "id": 10,
+      "name": "Thịt Xiên Nướng Yakitori",
+      "restaurant": "Quán Nướng Ngói",
+      "availableMeals": ["dinner"]
+    },
+    {
+      "id": 11,
+      "name": "Sụn Gà Nướng",
+      "restaurant": "Quán Nướng Ngói",
+      "availableMeals": ["dinner"]
+    },
+    {
+      "id": 12,
+      "name": "Ớt Chuông Nướng",
+      "restaurant": "Quán Nướng Ngói",
+      "availableMeals": ["dinner"]
+    },
+    {
+      "id": 13,
+      "name": "Cơm Hộp Chay",
+      "restaurant": "Bếp Chay Thanh Tịnh",
+      "availableMeals": ["lunch"]
+    },
+    {
+      "id": 14,
+      "name": "Bánh Mì Kẹp Salad",
+      "restaurant": "Bếp Chay Thanh Tịnh",
+      "availableMeals": ["breakfast"]
+    },
+    {
+      "id": 15,
+      "name": "Bánh Mì Nướng",
+      "restaurant": "Bếp Chay Thanh Tịnh",
+      "availableMeals": ["breakfast"]
+    },
+    {
+      "id": 16,
+      "name": "Salad Rau Củ",
+      "restaurant": "Bếp Chay Thanh Tịnh",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 17,
+      "name": "Salad Trái Cây",
+      "restaurant": "Bếp Chay Thanh Tịnh",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 18,
+      "name": "Súp Bắp",
+      "restaurant": "Bếp Chay Thanh Tịnh",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 19,
+      "name": "Súp Cà Chua",
+      "restaurant": "Bếp Chay Thanh Tịnh",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 20,
+      "name": "Súp Rau Kiểu Ý",
+      "restaurant": "Bếp Chay Thanh Tịnh",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 21,
+      "name": "Pizza Xúc Xích Ý",
+      "restaurant": "Lò Bánh Pizza",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 23,
+      "name": "Pizza Hải Sản",
+      "restaurant": "Lò Bánh Pizza",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 24,
+      "name": "Pizza Thập Cẩm",
+      "restaurant": "Lò Bánh Pizza",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 25,
+      "name": "Pizza Đế Dày Đặc Biệt",
+      "restaurant": "Lò Bánh Pizza",
+      "availableMeals": ["dinner"]
+    },
+    {
+      "id": 26,
+      "name": "Mì Xào",
+      "restaurant": "Tiệm Ăn Trung Hoa",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 27,
+      "name": "Đậu Phụ Ma Bà",
+      "restaurant": "Tiệm Ăn Trung Hoa",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 28,
+      "name": "Gà Cung Bảo",
+      "restaurant": "Tiệm Ăn Trung Hoa",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 29,
+      "name": "Hoành Thánh Chiên",
+      "restaurant": "Tiệm Ăn Trung Hoa",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 30,
+      "name": "Bánh Mì Bơ Tỏi",
+      "restaurant": "Nhà Hàng Ý Hạnh Phúc",
+      "availableMeals": ["breakfast", "lunch", "dinner"]
+    },
+    {
+      "id": 31,
+      "name": "Mì Ý Nhồi Thịt",
+      "restaurant": "Nhà Hàng Ý Hạnh Phúc",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 32,
+      "name": "Mì Ý Sợi Tròn",
+      "restaurant": "Nhà Hàng Ý Hạnh Phúc",
+      "availableMeals": ["lunch", "dinner"]
+    },
+    {
+      "id": 33,
+      "name": "Mì Ý Sợi Dẹt sốt Kem",
+      "restaurant": "Nhà Hàng Ý Hạnh Phúc",
+      "availableMeals": ["lunch", "dinner"]
+    }
+  ]
+}
