@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import Step1 from "./components/step-1";
+import Step2 from "./components/step-2";
+import Step3 from "./components/step-3";
+import Step4 from "./components/step-4";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface OrderData {
+  meal: string;
+  people: number;
+  restaurant: string;
+  dishes: { id: number; name: string; servings: number }[];
 }
 
-export default App
+const App: React.FC = () => {
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState<OrderData>({
+    meal: "", people: 1, restaurant: "", dishes: []
+  });
+
+  const updateData = (newData: Partial<OrderData>) => {
+    setFormData((prev) => ({ ...prev, ...newData }));
+  };
+
+  const handleNext = () => {
+    setStep((prev) => prev + 1);
+  };
+
+  const handleBack = () => {
+    setStep((prev) => prev - 1);
+  };
+
+  return (<div style={{ fontFamily: "sans-serif" }}>
+    {step === 1 && (<Step1
+      formData={formData}
+      updateData={updateData}
+      onNext={handleNext}
+    />)}
+    {step === 2 && (<Step2
+
+    />)}
+    {step === 3 && (<Step3
+
+    />)}
+    {step === 4 && (<Step4
+
+    />)}
+  </div>);
+};
+
+export default App;
