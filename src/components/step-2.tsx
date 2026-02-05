@@ -1,4 +1,6 @@
+import { Field, Form, Formik } from "formik";
 import React from "react";
+import * as Yup from "yup";
 
 interface Step2Props {
   formData: {
@@ -10,6 +12,10 @@ interface Step2Props {
   onBack: () => void;
   restaurants: string[];
 }
+
+const step2ValidationSchema = Yup.object().shape({
+  restaurant: Yup.string().required("Restaurant is required"),
+});
 
 const Step2: React.FC<Step2Props> = ({
   formData,
@@ -47,57 +53,84 @@ const Step2: React.FC<Step2Props> = ({
         <div style={{ padding: "5px 15px" }}>Review</div>
       </div>
 
-      <div style={{ marginTop: "60px" }}>
-        <p>Please Select a Restaurant</p>
-        <select
-          value={formData.restaurant}
-          onChange={(e) => updateData({ restaurant: e.target.value })}
-          style={{ width: "250px", padding: "5px", border: "2px solid black" }}
-        >
-          <option value="">---</option>
-          {restaurants.map((r) => (
-            <option key={r} value={r}>
-              {r}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          width: "100%",
-          maxWidth: "600px",
-          marginTop: "100px",
+      <Formik
+        initialValues={{
+          restaurant: formData.restaurant,
+        }}
+        validationSchema={step2ValidationSchema}
+        onSubmit={(values) => {
+          updateData({ restaurant: values.restaurant });
+          onNext();
         }}
       >
-        <button
-          onClick={onBack}
-          style={{
-            padding: "5px 20px",
-            backgroundColor: "white",
-            border: "2px solid black",
-            boxShadow: "3px 3px 0px black",
-            cursor: "pointer",
-          }}
-        >
-          Previous
-        </button>
+        <Form>
+          <div style={{ marginTop: "60px" }}>
+            <Field name="restaurant">
+              {({ field, meta }) => (
+                <div className="mt-10 grid grid-cols-2 gap-4">
+                  <label htmlFor="restaurant">Please Select a Restaurant</label>
+                  <select
+                    {...field}
+                    style={{
+                      width: "250px",
+                      padding: "5px",
+                      border: "2px solid black",
+                    }}
+                  >
+                    <option value="">---</option>
+                    {restaurants.map((r) => (
+                      <option key={r} value={r}>
+                        {r}
+                      </option>
+                    ))}
+                  </select>
 
-        <button
-          onClick={onNext}
-          style={{
-            padding: "5px 20px",
-            backgroundColor: "white",
-            border: "2px solid black",
-            boxShadow: "3px 3px 0px black",
-            cursor: "pointer",
-          }}
-        >
-          Next
-        </button>
-      </div>
+                  {meta.touched && meta.error && (
+                    <span className="text-red-500">{meta.error}</span>
+                  )}
+                </div>
+              )}
+            </Field>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+              maxWidth: "600px",
+              marginTop: "100px",
+            }}
+          >
+            <button
+              type="button"
+              onClick={onBack}
+              style={{
+                padding: "5px 20px",
+                backgroundColor: "white",
+                border: "2px solid black",
+                boxShadow: "3px 3px 0px black",
+                cursor: "pointer",
+              }}
+            >
+              Previous
+            </button>
+
+            <button
+              type="submit"
+              // onClick={onNext}
+              style={{
+                padding: "5px 20px",
+                backgroundColor: "white",
+                border: "2px solid black",
+                boxShadow: "3px 3px 0px black",
+                cursor: "pointer",
+              }}
+            >
+              Next
+            </button>
+          </div>
+        </Form>
+      </Formik>
     </div>
   );
 };
