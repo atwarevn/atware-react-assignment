@@ -3,8 +3,7 @@
 ## Overview
 
 This assignment is designed to evaluate your React skills, specifically regarding state management,
-form validation, and UI/UX implementation. You are provided with a "base" repository built with \*
-\*Vite + TypeScript\*\* that contains core logic and data, but with an intentionally minimal and
+form validation, and UI/UX implementation. You are provided with a "base" repository built with **Vite + TypeScript** that contains core logic and data, but with an intentionally minimal and
 unpolished user interface.
 
 Your goal is to complete the application logic and transform the UI into a professional,
@@ -20,7 +19,8 @@ production-ready product.
   project.
 - **Step 4 Implementation:** Complete the "Review" step to display a clear summary of all selections
   made in previous steps.
-- **Validation Logic:** \* User cannot proceed to the next step if inputs are invalid.
+- **Validation Logic:**
+  - User cannot proceed to the next step if inputs are invalid.
   - **Step 3 Constraint:** The total number of dishes (Sum of all servings) must be $\geq$ the
     number of people selected in Step 1, with a maximum of 10 servings allowed.
   - **Step 3 Constraint:** Users cannot select the same dish twice; they must increase the number
