@@ -20,7 +20,8 @@ production-ready product.
   project.
 - **Step 4 Implementation:** Complete the "Review" step to display a clear summary of all selections
   made in previous steps.
-- **Validation Logic:** \* User cannot proceed to the next step if inputs are invalid.
+- **Validation Logic:**
+  - User cannot proceed to the next step if inputs are invalid.
   - **Step 3 Constraint:** The total number of dishes (Sum of all servings) must be $\geq$ the
     number of people selected in Step 1, with a maximum of 10 servings allowed.
   - **Step 3 Constraint:** Users cannot select the same dish twice; they must increase the number
