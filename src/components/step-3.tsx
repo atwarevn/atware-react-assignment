@@ -12,6 +12,7 @@ interface Step3Props {
   onNext: () => void;
   onBack: () => void;
   availableDishes: any[];
+  error: string;
 }
 
 const Step3: React.FC<Step3Props> = ({
@@ -20,6 +21,7 @@ const Step3: React.FC<Step3Props> = ({
   onNext,
   onBack,
   availableDishes,
+  error,
 }) => {
   const handleAddDish = () => {
     const newDishes = [
@@ -44,6 +46,7 @@ const Step3: React.FC<Step3Props> = ({
         alignItems: "center",
       }}
     >
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <div
         style={{
           display: "flex",

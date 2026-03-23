@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import Step1 from "./components/step-1";
-import Step2 from "./components/step-2";
-import Step3 from "./components/step-3";
-import Step4 from "./components/step-4";
-import dishData from "./data/dishes.json";
+import React, { useState } from 'react';
+import Step1 from './components/step-1';
+import Step2 from './components/step-2';
+import Step3 from './components/step-3';
+import Step4 from './components/step-4';
+import dishData from './data/dishes.json';
 
 interface OrderData {
   meal: string;
@@ -13,13 +13,14 @@ interface OrderData {
 }
 
 const App: React.FC = () => {
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState<OrderData>({
-    meal: "",
+  const [ step, setStep ] = useState(1);
+  const [ formData, setFormData ] = useState<OrderData>({
+    meal: '',
     people: 1,
-    restaurant: "",
+    restaurant: '',
     dishes: [],
   });
+  const [ error, setError ] = useState<string>('');
 
   const filteredRestaurants = Array.from(
     new Set(
@@ -38,6 +39,19 @@ const App: React.FC = () => {
   };
 
   const handleNext = () => {
+    if (step === 3) {
+      const totalServings = formData.dishes.reduce((acc, dish) => acc + dish.servings, 0);
+      if (totalServings > 10) {
+        setError('You can only order maximum 10 dishes at a time');
+        return;
+      }
+
+      if (totalServings < formData.people) {
+        setError('The number of dishes cannot be smaller than the number of people');
+        return;
+      }
+    }
+
     setStep((prev) => prev + 1);
   };
 
@@ -70,9 +84,10 @@ const App: React.FC = () => {
           onNext={handleNext}
           onBack={handleBack}
           availableDishes={filteredDishes}
+          error={error}
         />
       )}
-      {step === 4 && <Step4 formData={formData} onBack={handleBack} />}
+      {step === 4 && <Step4 formData={formData} onBack={handleBack}/>}
     </main>
   );
 };
