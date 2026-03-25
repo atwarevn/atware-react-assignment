@@ -1,4 +1,5 @@
 import React from "react";
+import { useOrder } from "./context";
 
 interface Dish {
   id: number;
@@ -6,21 +7,20 @@ interface Dish {
   servings: number;
 }
 
-interface Step3Props {
-  formData: { dishes: Dish[] };
-  updateData: (data: { dishes: Dish[] }) => void;
-  onNext: () => void;
-  onBack: () => void;
-  availableDishes: any[];
+interface AvailableDish {
+  id: number;
+  name: string;
+  restaurant: string;
+  availableMeals: string[];
 }
 
-const Step3: React.FC<Step3Props> = ({
-  formData,
-  updateData,
-  onNext,
-  onBack,
-  availableDishes,
-}) => {
+interface Step3Props {
+  availableDishes: AvailableDish[];
+}
+
+const Step3: React.FC<Step3Props> = ({ availableDishes }) => {
+  const { formData, updateData, handleNext, handleBack } = useOrder();
+
   const handleAddDish = () => {
     const newDishes = [
       ...formData.dishes,
@@ -31,8 +31,62 @@ const Step3: React.FC<Step3Props> = ({
 
   const handleUpdateDish = (index: number, field: string, value: any) => {
     const updated = [...formData.dishes];
-    updated[index] = { ...updated[index], [field]: value };
+
+    // nếu chọn dish name → set luôn id đúng
+    if (field === "name") {
+      const selected = availableDishes.find((d) => d.name === value);
+
+      if (selected) {
+        updated[index] = {
+          ...updated[index],
+          name: selected.name,
+          id: selected.id,
+        };
+      }
+    } else {
+      updated[index] = {
+        ...updated[index],
+        [field]: value,
+      };
+    }
+
     updateData({ dishes: updated });
+
+    if (field === "name") {
+      const isDuplicate = formData.dishes.some(
+        (d, i) => d.name === value && i !== index,
+      );
+
+      if (isDuplicate) {
+        alert("Dish already selected, increase servings instead");
+        return;
+      }
+    }
+  };
+
+  const getTotalServings = () => {
+    return formData.dishes.reduce((sum, d) => sum + d.servings, 0);
+  };
+
+  const handleNextStep = () => {
+    if (formData.dishes.length === 0) {
+      alert("Please select at least one dish");
+      return;
+    }
+
+    const total = getTotalServings();
+
+    if (total > 10) {
+      alert("Maximum total servings is 10");
+      return;
+    }
+
+    if (total < formData.people) {
+      alert("Total servings must be >= number of people");
+      return;
+    }
+
+    handleNext();
   };
 
   return (
@@ -72,7 +126,7 @@ const Step3: React.FC<Step3Props> = ({
       <div style={{ marginTop: "80px", width: "100%", maxWidth: "600px" }}>
         {formData.dishes.length === 0 && <p>Bấm dấu + để thêm món ăn</p>}
 
-        {formData.dishes.map((item, index) => (
+        {formData.dishes.map((item: any, index: any) => (
           <div
             key={index}
             style={{ display: "flex", gap: "50px", marginBottom: "20px" }}
@@ -138,7 +192,7 @@ const Step3: React.FC<Step3Props> = ({
 
       <div style={{ display: "flex", gap: "400px", marginTop: "100px" }}>
         <button
-          onClick={onBack}
+          onClick={handleBack}
           style={{
             padding: "8px 20px",
             border: "2px solid black",
@@ -149,7 +203,7 @@ const Step3: React.FC<Step3Props> = ({
           Previous
         </button>
         <button
-          onClick={onNext}
+          onClick={handleNextStep}
           style={{
             padding: "8px 25px",
             border: "2px solid black",
